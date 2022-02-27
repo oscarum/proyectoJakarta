@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+
+    Copyright (c) 2018, 2021 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./template.xhtml">
+    <ui:define name="content">
+    	<h:form>
+    		<div class="container">
+	        	<div class="row">
+	        		<div class="col-12">
+	        			<h2>#{label['label.listaUsuarios']}</h2>
+	        		</div>
+	            </div>
+	            <h:form>
+	            	<div class="row">
+	            		<div class="col-12">
+	            			<h:commandButton value="#{label['boton.agregarUsuario']}" styleClass="btn btn-primary"
+                             action="altaUsuario" />
+	            		</div>
+	            	</div>
+		            <div class="row">
+		            	<div class="col-12 text-center">
+		            		
+		            			<h:dataTable value="#{administracionUsuariosBean.listaUsuarios}" var="usuario" class="table table-striped">
+		            				<h:column>
+		            					<f:facet name="header">#{label['label.usuario.id']}</f:facet>
+		            					<h:outputText value="#{usuario.id}"></h:outputText>
+		            				</h:column>
+		            				<h:column>
+		            					<f:facet name="header">#{label['label.usuario.nombre']}</f:facet>
+		            					<h:outputText value="#{usuario.nombre}"></h:outputText>
+		            				</h:column>
+		            				<h:column>
+		            					<f:facet name="header">#{label['label.usuario.primerApellido']}</f:facet>
+		            					<h:outputText value="#{usuario.primerApellido}"></h:outputText>
+		            				</h:column>
+		            				<h:column>
+		            					<f:facet name="header">#{label['label.usuario.segundoApellido']}</f:facet>
+		            					<h:outputText value="#{usuario.segundoApellido}"></h:outputText>
+		            				</h:column>
+		            				<h:column>
+		            					<f:facet name="header">#{label['label.usuario.fechaNacimiento']}</f:facet>
+		            					<h:outputText value="#{usuario.fechaNacimiento}">
+		            						<f:convertDateTime pattern="dd/mm/yyyy"></f:convertDateTime>
+		            					</h:outputText>
+		            				</h:column>
+		            				<h:column>
+		            					<f:facet name="header">#{label['label.usuario.rfc']}</f:facet>
+		            					<h:outputText value="#{usuario.rfc}"></h:outputText>
+		            				</h:column>
+		            				<h:column>
+		            					<f:facet name="header">#{label['label.usuario.correo']}</f:facet>
+		            					<h:outputText value="#{usuario.correo}"></h:outputText>
+		            				</h:column>
+		            				<h:column>
+		            					<f:facet name="header">#{label['label.usuario.area']}</f:facet>
+		            					<h:outputText value="#{usuario.area.descripcion}"></h:outputText>
+		            				</h:column>
+		            				<h:column>
+		            					<h:commandButton value="#{label['boton.editar']}"  action="#{administracionUsuariosBean.irAEditar}"
+		            						styleClass="btn btn-secondary">
+		            						<f:setPropertyActionListener target="#{administracionUsuariosBean.usuarioSeleccionado}"
+		            							value="#{usuario}"/>
+		            					</h:commandButton><p></p>
+		            				</h:column>
+		            				<h:column>
+		            					<h:commandButton value="#{label['boton.eliminar']}" action="#{administracionUsuariosBean.eliminarUsuario}"  
+		            					styleClass="btn btn-danger">
+		            						<f:setPropertyActionListener target="#{administracionUsuariosBean.usuarioSeleccionado}"
+		            							value="#{usuario}"/>
+		            					</h:commandButton>
+		            				</h:column>
+		            			</h:dataTable>
+		            	</div>
+		            </div>
+	            </h:form>
+        	</div>
+        </h:form>
+    </ui:define>
+    
+</ui:composition>

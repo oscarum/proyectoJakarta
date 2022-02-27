@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+
+    Copyright (c) 2018, 2021 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./template.xhtml">
+    <ui:define name="content">
+    	<h:form>
+    		<div class="container">
+	            <div class="row">
+	            	<div class="col-12">
+	            		<h3>#{label['titulo.altaUsuario']}</h3>
+	            	</div>
+	            </div>
+	            <p></p>
+	            <div class="row">
+	            	<div class="col-3">
+	            		<h:outputText value="#{label['label.usuario.nombre']}: "/>
+	            	</div>
+	            	<div class="col-9">
+	            		<h:inputText id="iNombre" title="#{label['label.usuario.nombre']}: " required="true" styleClass="form-control"
+	            			value="#{administracionUsuariosBean.usuarioTmp.nombre}"/>
+	            	</div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-3">
+	            		<h:outputText value="#{label['label.usuario.primerApellido']}: "/>
+	            	</div>
+	            	<div class="col-9">
+	            		<h:inputText id="iApPat" title="#{label['label.usuario.primerApellido']}: " required="true" styleClass="form-control"
+	            			value="#{administracionUsuariosBean.usuarioTmp.primerApellido}"/>
+	            	</div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-3">
+	            		<h:outputText value="#{label['label.usuario.segundoApellido']}: "/>
+	            	</div>
+	            	<div class="col-9">
+	            		<h:inputText id="iApMat" title="#{label['label.usuario.segundoApellido']}: " required="true" styleClass="form-control"
+	            			value="#{administracionUsuariosBean.usuarioTmp.segundoApellido}"/>
+	            	</div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-3">
+	            		<h:outputText value="#{label['label.usuario.fechaNacimiento']}: "/>
+	            	</div>
+	            	<div class="col-9">
+	            		<h:inputText id="iFecNac" title="#{label['label.usuario.fechaNacimiento']}: " required="true" 
+	            			value="#{administracionUsuariosBean.usuarioTmp.fechaNacimiento}">
+	            			<f:convertDateTime pattern="dd/mm/yyyy"></f:convertDateTime>
+	            		</h:inputText>
+	            	</div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-3">
+	            		<h:outputText value="#{label['label.usuario.rfc']}: "/>
+	            	</div>
+	            	<div class="col-9">
+	            		<h:inputText id="iRfc" title="#{label['label.usuario.rfc']}: " required="true" styleClass="form-control"
+	            			value="#{administracionUsuariosBean.usuarioTmp.rfc}"/>
+	            	</div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-3">
+	            		<h:outputText value="#{label['label.usuario.correo']}: "/>
+	            	</div>
+	            	<div class="col-9">
+	            		<h:inputText id="iCorreo" title="#{label['label.usuario.correo']}: " required="true" styleClass="form-control"
+	            			value="#{administracionUsuariosBean.usuarioTmp.correo}"/>
+	            	</div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-3">
+	            		<h:outputText value="#{label['label.usuario.area']}: "/>
+	            	</div>
+	            	<div class="col-9">
+	            		<h:selectOneMenu id="somArea" 
+	            			value="#{administracionUsuariosBean.areaSeleccionada}">
+	            				<f:selectItems value="#{administracionUsuarioBean.listaAreas}" var="a" itemValue="#{a}"
+	            					itemLabel="#{a.descripcion}" />
+	            		</h:selectOneMenu>
+	            	</div>
+	            </div>
+	            <p></p>
+	            <div class="row">
+	            	<div class="col-6 text-center">
+	            		<h:commandButton value="#{label['boton.guardar']}" styleClass="btn btn-secondary"
+                             action="#{administracionUsuariosBean.guardarUsuario}" />
+	            	</div>
+	            	<div class="col-6 text-center">
+	            		<h:commandButton value="#{label['boton.limpiar']}" styleClass="btn btn-primary"
+                             type="reset"/>
+	            	</div>
+	            	
+	            </div>
+        	</div>
+        </h:form>
+    </ui:define>
+    
+</ui:composition>
